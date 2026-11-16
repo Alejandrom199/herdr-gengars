@@ -1,0 +1,34 @@
+{
+  "model": "sonnet",
+  "enabledPlugins": {
+    "roving-office@roving-office": true
+  },
+  "extraKnownMarketplaces": {
+    "roving-office": {
+      "source": {
+        "source": "url",
+        "url": "https://therovingoffice.com/plugins/claude/marketplace.json"
+      }
+    }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Agent|Task",
+        "hooks": [{ "type": "command", "command": "node C:/Users/smaldonado/.claude/hooks/equipo-estado.js start" }]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [{ "type": "command", "command": "node C:/Users/smaldonado/.claude/hooks/nombrar-orquestador.js" }]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [{ "type": "command", "command": "node C:/Users/smaldonado/.claude/hooks/equipo-estado.js stop" }]
+      }
+    ]
+  },
+  "theme": "dark",
+  "agentPushNotifEnabled": true
+}
